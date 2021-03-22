@@ -19,8 +19,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Source Code Pro" :size 18)
-       doom-variable-pitch-font (font-spec :family "open sans" :size 20))
+(setq doom-font (font-spec :family "Source Code Pro" :size 18))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -49,11 +48,13 @@
   :init
   (setq org-journal-date-prefix "#+TITLE: "
         org-journal-file-format "%Y%m%d.org"
-        org-journal-date-format "%A, %d %B %Y")
+        org-journal-date-format "%A, %d %B %Y"
+        org-journal-time-prefix "* ")
   :config
   (map! :leader
         :prefix "j"
         :desc "org-journal-new-entry" "j" #'org-journal-new-entry
+        :desc "org-journal-scheduled-entry" "s" #'org-journal-new-scheduled-entry
         :desc "org-journal-current-file" "t" #'org-journal-open-current-journal-file
         :desc "org-journal-display-entry" "d" #'org-journal-display-entry
         :desc "org-agenda" "a" #'org-agenda)
