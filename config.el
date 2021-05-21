@@ -24,11 +24,28 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-dark+)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Aasrith/Dropbox/org/")
+
+(after! org
+  (custom-set-faces!
+    '(org-document-title :height 1.3)
+    '(org-level-1 :inherit outline-1 :weight regular)
+    '(org-level-2 :inherit outline-2 :weight regular)
+    '(org-level-3 :inherit outline-3 :weight regular)
+    '(org-level-4 :inherit outline-4 :weight regular)
+    '(org-level-5 :inherit outline-5 :weight regular)))
+
+;;org-mode timestamp keybindings
+(map! :leader
+      :prefix "d"
+      :desc "org-timestamp" "t" #'org-time-stamp
+      :desc "org-schedule" "s" #'org-schedule
+      :desc "org-deadline" "d" #'org-deadline
+      :desc "org-agenda-schedule" "c" #'org-agenda-schedule)
 
 ;; org-roam config
 (after! org-roam
